@@ -22,9 +22,9 @@ public class ModelImpl implements Model {
 
   @Override
   public void addLamp(int r, int c) {
-    if (active.getCellType(r, c) != CellType.CORRIDOR) throw new IllegalArgumentException();
     if (r >= active.getHeight() || r < 0 || c >= active.getWidth() || c < 0)
       throw new IndexOutOfBoundsException();
+    if (active.getCellType(r, c) != CellType.CORRIDOR) throw new IllegalArgumentException();
     if (!lamb[r][c]) lamb[r][c] = true;
   }
 
@@ -128,7 +128,8 @@ public class ModelImpl implements Model {
   public void resetPuzzle() {
     for (int i = 0; i < active.getHeight(); i++) {
       for (int j = 0; i < active.getWidth(); j++) {
-        if (isLamp(i, j)) removeLamp(i, j);
+        if(active.getCellType(i,j) == CellType.CORRIDOR)
+          if (isLamp(i, j)) removeLamp(i, j);
       }
     }
   }
