@@ -25,7 +25,7 @@ public class ModelImpl implements Model {
     if (r >= active.getHeight() || r < 0 || c >= active.getWidth() || c < 0)
       throw new IndexOutOfBoundsException();
     if (active.getCellType(r, c) == CellType.CLUE || active.getCellType(r, c) == CellType.WALL)
-      throw new IllegalArgumentException();
+      throw new IndexOutOfBoundsException();
     if (!lamb[r][c]) lamb[r][c] = true;
   }
 
