@@ -127,7 +127,7 @@ public class ModelImpl implements Model {
   @Override
   public void resetPuzzle() {
     for (int i = 0; i < active.getHeight(); i++) {
-      for (int j = 0; i < active.getWidth(); j++) {
+      for (int j = 0; j < active.getWidth(); j++) {
         if(active.getCellType(i,j) == CellType.CORRIDOR)
           if (isLamp(i, j)) removeLamp(i, j);
       }
