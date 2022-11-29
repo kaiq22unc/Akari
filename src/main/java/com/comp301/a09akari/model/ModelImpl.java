@@ -24,7 +24,7 @@ public class ModelImpl implements Model {
   public void addLamp(int r, int c) {
     if (r >= active.getHeight() || r < 0 || c >= active.getWidth() || c < 0)
       throw new IndexOutOfBoundsException();
-    //if (active.getCellType(r, c) == CellType.CORRIDOR) throw new IllegalArgumentException();
+    // if (active.getCellType(r, c) == CellType.CORRIDOR) throw new IllegalArgumentException();
     if (!lamb[r][c]) lamb[r][c] = true;
   }
 
@@ -69,7 +69,7 @@ public class ModelImpl implements Model {
   public boolean isLamp(int r, int c) {
     if (r >= active.getHeight() || r < 0 || c >= active.getWidth() || c < 0)
       throw new IndexOutOfBoundsException();
-    if (active.getCellType(r, c) != CellType.CORRIDOR) throw new IllegalArgumentException();
+    // if (active.getCellType(r, c) != CellType.CORRIDOR) throw new IllegalArgumentException();
     return lamb[r][c];
   }
 
