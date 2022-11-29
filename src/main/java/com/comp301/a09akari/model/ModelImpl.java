@@ -24,7 +24,7 @@ public class ModelImpl implements Model {
   public void addLamp(int r, int c) {
     if (r >= active.getHeight() || r < 0 || c >= active.getWidth() || c < 0)
       throw new IndexOutOfBoundsException();
-    if (active.getCellType(r, c) != CellType.CORRIDOR) throw new IllegalArgumentException();
+    //if (active.getCellType(r, c) != CellType.CORRIDOR) throw new IllegalArgumentException();
     if (!lamb[r][c]) lamb[r][c] = true;
   }
 
@@ -43,22 +43,22 @@ public class ModelImpl implements Model {
     if (active.getCellType(r, c) != CellType.CORRIDOR) throw new IllegalArgumentException();
     int tr = r;
     int tc = c;
-    while (active.getCellType(r, c) == CellType.CORRIDOR) {
+    while (active.getCellType(r, c) == CellType.CORRIDOR && r>=0 && r < active.getHeight()) {
       if (isLamp(r, c)) return true;
       r = r - 1;
     }
     r = tr;
-    while (active.getCellType(r, c) == CellType.CORRIDOR) {
+    while (active.getCellType(r, c) == CellType.CORRIDOR && r>=0 && r < active.getHeight()) {
       if (isLamp(r, c)) return true;
       r = r + 1;
     }
     r = tr;
-    while (active.getCellType(r, c) == CellType.CORRIDOR) {
+    while (active.getCellType(r, c) == CellType.CORRIDOR && c>=0 && c < active.getWidth()) {
       if (isLamp(r, c)) return true;
       c = c - 1;
     }
     c = tc;
-    while (active.getCellType(r, c) == CellType.CORRIDOR) {
+    while (active.getCellType(r, c) == CellType.CORRIDOR && c>=0&& r < active.getWidth()) {
       if (isLamp(r, c)) return true;
       c = c + 1;
     }
