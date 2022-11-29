@@ -10,6 +10,7 @@ public class ModelImpl implements Model {
   private Puzzle active;
   private boolean lamb[][];
   private List<ModelObserver> obs;
+
   public ModelImpl(PuzzleLibrary library) {
     // Your constructor code here
     lib = library;
@@ -103,6 +104,7 @@ public class ModelImpl implements Model {
 
   @Override
   public Puzzle getActivePuzzle() {
+    active = lib.getPuzzle(index);
     return active;
   }
 
@@ -135,12 +137,9 @@ public class ModelImpl implements Model {
   public boolean isSolved() {
     for (int i = 0; i < active.getHeight(); i++) {
       for (int j = 0; i < active.getWidth(); j++) {
-        if(active.getCellType(i,j) == CellType.CLUE)
-            if(!isClueSatisfied(i,j)) return false;
-        if(active.getCellType(i,j)==CellType.CORRIDOR)
-            if(!isLit(i,j)) return false;
-        if(isLamp(i,j))
-            if(isLampIllegal(i,j)) return false;
+        if (active.getCellType(i, j) == CellType.CLUE) if (!isClueSatisfied(i, j)) return false;
+        if (active.getCellType(i, j) == CellType.CORRIDOR) if (!isLit(i, j)) return false;
+        if (isLamp(i, j)) if (isLampIllegal(i, j)) return false;
       }
     }
     return true;
@@ -161,11 +160,11 @@ public class ModelImpl implements Model {
 
   @Override
   public void addObserver(ModelObserver observer) {
-        obs.add(observer);
+    obs.add(observer);
   }
 
   @Override
   public void removeObserver(ModelObserver observer) {
-      obs.remove(observer);
+    obs.remove(observer);
   }
 }
