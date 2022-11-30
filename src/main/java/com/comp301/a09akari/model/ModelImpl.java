@@ -169,7 +169,7 @@ public class ModelImpl implements Model {
     if (i - 1 >= 0) if (isLamp(i - 1, j)) counter++;
     if (j + 1 < active.getWidth()) if (isLamp(i, j + 1)) counter++;
     if (j - 1 >= 0) if (isLamp(i, j - 1)) counter++;
-    return counter <= active.getClue(i, j);
+    return counter == active.getClue(i, j);
   }
 
   @Override
