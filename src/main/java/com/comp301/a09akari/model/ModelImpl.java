@@ -80,22 +80,22 @@ public class ModelImpl implements Model {
     if (!isLamp(r, c)) throw new IllegalArgumentException();
     int tr = r;
     int tc = c;
-    while (active.getCellType(r, c) == CellType.CORRIDOR) {
+    while (active.getCellType(r, c) == CellType.CORRIDOR && r > 0) {
       r = r - 1;
       if (isLamp(r, c)) return true;
     }
     r = tr;
-    while (active.getCellType(r, c) == CellType.CORRIDOR) {
+    while (active.getCellType(r, c) == CellType.CORRIDOR && r < active.getHeight()) {
       r = r + 1;
       if (isLamp(r, c)) return true;
     }
     r = tr;
-    while (active.getCellType(r, c) == CellType.CORRIDOR) {
+    while (active.getCellType(r, c) == CellType.CORRIDOR && c > 0) {
       c = c - 1;
       if (isLamp(r, c)) return true;
     }
     c = tc;
-    while (active.getCellType(r, c) == CellType.CORRIDOR) {
+    while (active.getCellType(r, c) == CellType.CORRIDOR && c < active.getWidth()) {
       c = c + 1;
       if (isLamp(r, c)) return true;
     }
