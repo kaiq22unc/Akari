@@ -80,7 +80,7 @@ public class ModelImpl implements Model {
     if (!isLamp(r, c)) throw new IllegalArgumentException();
     int tr = r;
     int tc = c;
-    while (active.getCellType(r - 1, c) == CellType.CORRIDOR && r > 0) {
+    while (active.getCellType(r - 1, c) == CellType.CORRIDOR && r >= 1) {
       r = r - 1;
       if (isLamp(r, c)) return true;
     }
@@ -90,7 +90,7 @@ public class ModelImpl implements Model {
       if (isLamp(r, c)) return true;
     }
     r = tr;
-    while (active.getCellType(r, c - 1) == CellType.CORRIDOR && c > 0) {
+    while (active.getCellType(r, c - 1) == CellType.CORRIDOR && c >= 1) {
       c = c - 1;
       if (isLamp(r, c)) return true;
     }
