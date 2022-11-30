@@ -157,7 +157,8 @@ public class ModelImpl implements Model {
       for (int j = 0; j < active.getWidth(); j++) {
         if (active.getCellType(i, j) == CellType.CLUE) if (!isClueSatisfied(i, j)) return false;
         if (active.getCellType(i, j) == CellType.CORRIDOR) if (!isLit(i, j)) return false;
-        if (isLamp(i, j)) if (isLampIllegal(i, j)) return false;
+        if (active.getCellType(i, j) == CellType.CORRIDOR)
+          if (isLamp(i, j)) if (isLampIllegal(i, j)) return false;
       }
     }
     return true;
