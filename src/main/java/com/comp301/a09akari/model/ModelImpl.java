@@ -43,7 +43,7 @@ public class ModelImpl implements Model {
     if (active.getCellType(r, c) != CellType.CORRIDOR) throw new IllegalArgumentException();
     int tr = r;
     int tc = c;
-    while (active.getCellType(r, c) == CellType.CORRIDOR && r >= 0 && r < active.getHeight()) {
+    while (active.getCellType(r, c) == CellType.CORRIDOR && r < active.getHeight()) {
       if (isLamp(r, c)) return true;
       r = r - 1;
       if (r < 0) break;
@@ -55,7 +55,7 @@ public class ModelImpl implements Model {
       if (r >= active.getHeight()) break;
     }
     r = tr;
-    while (active.getCellType(r, c) == CellType.CORRIDOR && c >= 0 && c < active.getWidth()) {
+    while (active.getCellType(r, c) == CellType.CORRIDOR && c < active.getWidth()) {
       if (isLamp(r, c)) return true;
       c = c - 1;
       if (c < 0) break;
