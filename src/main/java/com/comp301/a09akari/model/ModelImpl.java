@@ -26,6 +26,7 @@ public class ModelImpl implements Model {
       throw new IndexOutOfBoundsException();
     if (active.getCellType(r, c) != CellType.CORRIDOR) throw new IllegalArgumentException();
     if (!lamb[r][c]) lamb[r][c] = true;
+    notifyObs();
   }
 
   @Override
@@ -34,6 +35,7 @@ public class ModelImpl implements Model {
       throw new IndexOutOfBoundsException();
     if (active.getCellType(r, c) != CellType.CORRIDOR) throw new IllegalArgumentException();
     if (lamb[r][c]) lamb[r][c] = false;
+    notifyObs();
   }
 
   @Override
@@ -135,6 +137,7 @@ public class ModelImpl implements Model {
     if (i >= lib.size() || i < 0) throw new IndexOutOfBoundsException();
     index = i;
     active = lib.getPuzzle(index);
+    notifyObs();
   }
 
   @Override
@@ -149,6 +152,7 @@ public class ModelImpl implements Model {
         if (active.getCellType(i, j) == CellType.CORRIDOR) if (isLamp(i, j)) removeLamp(i, j);
       }
     }
+    notifyObs();
   }
 
   @Override
@@ -185,5 +189,10 @@ public class ModelImpl implements Model {
   @Override
   public void removeObserver(ModelObserver observer) {
     obs.remove(observer);
+  }
+
+  @Override
+  public void notifyObs() {
+    for (ModelObserver o : obs) o.update(this);
   }
 }
