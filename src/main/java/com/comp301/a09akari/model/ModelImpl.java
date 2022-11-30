@@ -92,7 +92,7 @@ public class ModelImpl implements Model {
         if (r < 0) break;
       }
     }
-    if (r < active.getHeight() - 1) {
+    if (tr < active.getHeight() - 1) {
       r = tr + 1;
       while (active.getCellType(r, c) == CellType.CORRIDOR && r < active.getHeight()) {
         if (isLamp(r, c)) return true;
@@ -109,7 +109,7 @@ public class ModelImpl implements Model {
         if (c < 0) break;
       }
     }
-    if (c < active.getWidth() - 1) {
+    if (tc < active.getWidth() - 1) {
       c = tc + 1;
       while (active.getCellType(r, c) == CellType.CORRIDOR && c < active.getWidth()) {
         if (isLamp(r, c)) return true;
