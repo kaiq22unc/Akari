@@ -163,7 +163,7 @@ public class ModelImpl implements Model {
   public boolean isClueSatisfied(int i, int j) {
     if (i >= active.getHeight() || i < 0 || j >= active.getWidth() || j < 0)
       throw new IndexOutOfBoundsException();
-    if (active.getCellType(i, j) != CellType.CORRIDOR) throw new IllegalArgumentException();
+    if (active.getCellType(i, j) != CellType.CLUE) throw new IllegalArgumentException();
     int counter = 0;
     if (i + 1 < active.getHeight()) if (isLamp(i + 1, j)) counter++;
     if (i - 1 >= 0) if (isLamp(i - 1, j)) counter++;
