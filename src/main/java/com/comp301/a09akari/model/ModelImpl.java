@@ -154,7 +154,7 @@ public class ModelImpl implements Model {
   @Override
   public boolean isSolved() {
     for (int i = 0; i < active.getHeight(); i++) {
-      for (int j = 0; i < active.getWidth(); j++) {
+      for (int j = 0; j < active.getWidth(); j++) {
         if (active.getCellType(i, j) == CellType.CLUE) if (!isClueSatisfied(i, j)) return false;
         if (active.getCellType(i, j) == CellType.CORRIDOR) if (!isLit(i, j)) return false;
         if (isLamp(i, j)) if (isLampIllegal(i, j)) return false;
