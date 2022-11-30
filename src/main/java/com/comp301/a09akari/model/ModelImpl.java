@@ -97,7 +97,7 @@ public class ModelImpl implements Model {
       }
       r = tr;
     }
-    if (c >= 0) {
+    if (c > 0) {
       c = c - 1;
       while (active.getCellType(r, c) == CellType.CORRIDOR && c >= 0) {
         if (isLamp(r, c)) return true;
