@@ -123,7 +123,7 @@ public class AppLauncher extends Application {
     layout.getChildren().add(cv.render());
     layout.getChildren().add(done);
     layout.setAlignment(Pos.CENTER);
-    Scene scene = new Scene(layout, 390, 390);
+    Scene scene = new Scene(layout);
     stage.setScene(scene);
     stage.sizeToScene();
     model.addObserver(
