@@ -137,6 +137,7 @@ public class ModelImpl implements Model {
     if (i >= lib.size() || i < 0) throw new IndexOutOfBoundsException();
     index = i;
     active = lib.getPuzzle(index);
+    lamb = new boolean[active.getHeight()][active.getWidth()];
     notifyObs();
   }
 

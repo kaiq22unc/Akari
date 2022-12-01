@@ -5,3 +5,7 @@
  * JavaFX start() method:
  *   scene.getStylesheets().add("main.css");
  */
+
+.label {
+     -fx-text-fill: black;
+ }
