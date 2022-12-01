@@ -5,9 +5,10 @@ import com.comp301.a09akari.controller.ControllerImpl;
 import com.comp301.a09akari.model.*;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -81,7 +82,7 @@ public class AppLauncher extends Application {
     ClassicMvcController controller = new ControllerImpl(model);
 
     stage.setTitle("Akari");
-    Pane layout = new VBox();
+    VBox layout = new VBox();
 
     PuzzleView pv = new PuzzleView(model, controller);
     ControlView cv = new ControlView(controller);
@@ -109,18 +110,29 @@ public class AppLauncher extends Application {
           st.setScene(s);
           st.show();
         });
+    Label index =
+        new Label(
+            "Puzzle "
+                + String.valueOf(model.getActivePuzzleIndex() + 1)
+                + " of "
+                + String.valueOf(model.getPuzzleLibrarySize()));
 
+    layout.getChildren().add(index);
     layout.getChildren().add(pv.render());
     layout.getChildren().add(cv.render());
     layout.getChildren().add(done);
+    layout.setAlignment(Pos.CENTER);
     Scene scene = new Scene(layout, 350, 350);
     stage.setScene(scene);
+    stage.sizeToScene();
     model.addObserver(
         (Model m) -> {
           layout.getChildren().clear();
+          layout.getChildren().add(index);
           layout.getChildren().add(pv.render());
           layout.getChildren().add(cv.render());
           layout.getChildren().add(done);
+          layout.setAlignment(Pos.CENTER);
           // scene.setRoot(layout);
           stage.sizeToScene();
         });

@@ -41,6 +41,16 @@ public class PuzzleView implements FXComponent {
     return title;
   }
 
+  public static Label saticlue(int num) {
+    Label title;
+    title = new Label(String.valueOf(num));
+    title.setBackground(
+        new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+    title.setTextFill(Color.GREEN);
+    title.setPadding(new Insets(4));
+    return title;
+  }
+
   public static StackPane sp(Label l) {
     StackPane s = new StackPane(l);
     s.setBackground(
@@ -99,8 +109,10 @@ public class PuzzleView implements FXComponent {
     }
     for (int i = 0; i < r; i++) {
       for (int j = 0; j < c; j++) {
-        if (active.getCellType(i, j) == CellType.CLUE)
+        if (active.getCellType(i, j) == CellType.CLUE && !model.isClueSatisfied(i, j))
           grid.add(sp(clue(active.getClue(i, j))), j, i);
+        else if (active.getCellType(i, j) == CellType.CLUE && model.isClueSatisfied(i, j))
+          grid.add(sp(saticlue(active.getClue(i, j))), j, i);
         else if (active.getCellType(i, j) == CellType.WALL) grid.add(sp(black()), j, i);
         else {
           /*Button bt = new Button();

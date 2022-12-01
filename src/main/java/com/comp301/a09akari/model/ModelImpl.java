@@ -176,10 +176,14 @@ public class ModelImpl implements Model {
       throw new IndexOutOfBoundsException();
     if (active.getCellType(i, j) != CellType.CLUE) throw new IllegalArgumentException();
     int counter = 0;
-    if (i + 1 < active.getHeight()) if (isLamp(i + 1, j)) counter++;
-    if (i - 1 >= 0) if (isLamp(i - 1, j)) counter++;
-    if (j + 1 < active.getWidth()) if (isLamp(i, j + 1)) counter++;
-    if (j - 1 >= 0) if (isLamp(i, j - 1)) counter++;
+    if (i + 1 < active.getHeight() && active.getCellType(i + 1, j) == CellType.CORRIDOR)
+      if (isLamp(i + 1, j)) counter++;
+    if (i - 1 >= 0 && active.getCellType(i - 1, j) == CellType.CORRIDOR)
+      if (isLamp(i - 1, j)) counter++;
+    if (j + 1 < active.getWidth() && active.getCellType(i, j + 1) == CellType.CORRIDOR)
+      if (isLamp(i, j + 1)) counter++;
+    if (j - 1 >= 0 && active.getCellType(i, j - 1) == CellType.CORRIDOR)
+      if (isLamp(i, j - 1)) counter++;
     return counter == active.getClue(i, j);
   }
 
