@@ -106,7 +106,7 @@ public class AppLauncher extends Application {
           if (!model.isSolved()) vb.getChildren().add(re);
           if (model.isSolved()) vb.getChildren().add(ok);
           vb.setAlignment(Pos.CENTER);
-          Scene s = new Scene(vb, 350, 350);
+          Scene s = new Scene(vb, 300, 150);
 
           st.setScene(s);
           st.show();
@@ -151,7 +151,7 @@ public class AppLauncher extends Application {
             if (!model.isSolved()) vb.getChildren().add(re);
             if (model.isSolved()) vb.getChildren().add(ok);
             vb.setAlignment(Pos.CENTER);
-            Scene s = new Scene(vb, 350, 350);
+            Scene s = new Scene(vb, 300, 150);
 
             st.setScene(s);
             st.show();
