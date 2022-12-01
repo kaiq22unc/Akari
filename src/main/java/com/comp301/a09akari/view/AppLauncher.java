@@ -105,6 +105,7 @@ public class AppLauncher extends Application {
           vb.getChildren().add(mv.render());
           if (!model.isSolved()) vb.getChildren().add(re);
           if (model.isSolved()) vb.getChildren().add(ok);
+          vb.setAlignment(Pos.CENTER);
           Scene s = new Scene(vb, 350, 350);
 
           st.setScene(s);
@@ -127,14 +128,34 @@ public class AppLauncher extends Application {
     stage.sizeToScene();
     model.addObserver(
         (Model m) -> {
+          Label index1 =
+              new Label(
+                  "Puzzle "
+                      + String.valueOf(model.getActivePuzzleIndex() + 1)
+                      + " of "
+                      + String.valueOf(model.getPuzzleLibrarySize()));
           layout.getChildren().clear();
-          layout.getChildren().add(index);
+          layout.getChildren().add(index1);
           layout.getChildren().add(pv.render());
           layout.getChildren().add(cv.render());
           layout.getChildren().add(done);
           layout.setAlignment(Pos.CENTER);
           // scene.setRoot(layout);
           stage.sizeToScene();
+          if (model.isSolved()) {
+            Stage st = new Stage();
+            VBox vb = new VBox();
+            Button re = mv.ret();
+            Button ok = mv.ok();
+            vb.getChildren().add(mv.render());
+            if (!model.isSolved()) vb.getChildren().add(re);
+            if (model.isSolved()) vb.getChildren().add(ok);
+            vb.setAlignment(Pos.CENTER);
+            Scene s = new Scene(vb, 350, 350);
+
+            st.setScene(s);
+            st.show();
+          }
         });
     stage.show();
   }
