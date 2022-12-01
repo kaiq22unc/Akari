@@ -141,7 +141,7 @@ public class AppLauncher extends Application {
           layout.getChildren().add(done);
           layout.setAlignment(Pos.CENTER);
           // scene.setRoot(layout);
-            stage.sizeToScene();
+          stage.sizeToScene();
           if (model.isSolved()) {
             Stage st = new Stage();
             VBox vb = new VBox();
