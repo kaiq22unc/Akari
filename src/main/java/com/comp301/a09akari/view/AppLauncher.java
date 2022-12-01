@@ -123,7 +123,7 @@ public class AppLauncher extends Application {
     layout.getChildren().add(cv.render());
     layout.getChildren().add(done);
     layout.setAlignment(Pos.CENTER);
-    Scene scene = new Scene(layout, 350, 350);
+    Scene scene = new Scene(layout, 390, 390);
     stage.setScene(scene);
     stage.sizeToScene();
     model.addObserver(
@@ -141,7 +141,7 @@ public class AppLauncher extends Application {
           layout.getChildren().add(done);
           layout.setAlignment(Pos.CENTER);
           // scene.setRoot(layout);
-          stage.sizeToScene();
+            stage.sizeToScene();
           if (model.isSolved()) {
             Stage st = new Stage();
             VBox vb = new VBox();
