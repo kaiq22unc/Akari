@@ -63,7 +63,8 @@ public class ModelImpl implements Model {
       if (c < 0) break;
     }
     c = tc;
-    while (active.getCellType(r, c) == CellType.CORRIDOR && c >= 0 && r < active.getWidth()) {
+    r = tr;
+    while (active.getCellType(r, c) == CellType.CORRIDOR && c < active.getWidth()) {
       if (isLamp(r, c)) return true;
       c = c + 1;
       if (c >= active.getWidth()) break;

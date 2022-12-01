@@ -57,8 +57,6 @@ public class PuzzleView implements FXComponent {
     return s;
   }
 
-
-
   public static StackPane Bulb() {
     Label l = new Label("B");
     StackPane s = new StackPane(l);
@@ -73,7 +71,7 @@ public class PuzzleView implements FXComponent {
     l.setTextFill(Color.RED);
     StackPane s = new StackPane(l);
     s.setBackground(
-            new Background(new BackgroundFill(Color.YELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
+        new Background(new BackgroundFill(Color.YELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
     s.setMinSize(30, 30);
     return s;
   }
@@ -122,7 +120,7 @@ public class PuzzleView implements FXComponent {
             grid.add(pic,i,j);*/
           if (model.isLit(i, j)) grid.add(lit(), j, i);
           if (model.isLamp(i, j)) grid.add(Bulb(), j, i);
-          if(model.isLamp(i,j) && model.isLampIllegal(i,j)) grid.add(Ill(),j,i);
+          if (model.isLamp(i, j) && model.isLampIllegal(i, j)) grid.add(Ill(), j, i);
           Button bt = new Button();
           int finalI = i;
           int finalJ = j;
@@ -131,10 +129,11 @@ public class PuzzleView implements FXComponent {
                 controller.clickCell(finalI, finalJ);
               });
           bt.setVisible(true);
-          bt.setMinSize(30,30);
-          bt.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT,CornerRadii.EMPTY,Insets.EMPTY)));
+          bt.setMinSize(30, 30);
+          bt.setBackground(
+              new Background(
+                  new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
           grid.add(bt, j, i);
-
         }
       }
     }

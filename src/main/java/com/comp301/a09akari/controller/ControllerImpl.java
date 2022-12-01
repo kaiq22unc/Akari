@@ -16,7 +16,7 @@ public class ControllerImpl implements ClassicMvcController {
   @Override
   public void clickNextPuzzle() {
     int index = model.getActivePuzzleIndex();
-    if (index < model.getPuzzleLibrarySize()-1) model.setActivePuzzleIndex(index + 1);
+    if (index < model.getPuzzleLibrarySize() - 1) model.setActivePuzzleIndex(index + 1);
   }
 
   @Override
